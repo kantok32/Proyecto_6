@@ -68,6 +68,32 @@ MercadoPirata/
 5. **Accede a la documentación interactiva:**
    - Ve a [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
+## Cumplimiento de requisitos del proyecto
+
+### 1. Arquitectura de carpetas y archivos clara
+El proyecto está organizado en carpetas para controladores, modelos, rutas, middleware y archivos de configuración, siguiendo buenas prácticas de modularidad y escalabilidad.
+
+### 2. Autenticación y autorización
+Se implementa autenticación de usuarios con JWT y middleware para proteger rutas. Solo los usuarios autenticados pueden acceder a endpoints protegidos.
+
+### 3. Modelos de Usuario y Producto
+Existen modelos de Usuario y Producto usando Mongoose, con validaciones y relaciones entre ellos. Además, se incluye un modelo de Envío para simular un sistema de e-commerce.
+
+### 4. Operaciones CRUD para Producto
+Se implementan endpoints para crear, leer, actualizar y eliminar productos, cumpliendo con el ciclo CRUD completo.
+
+### 5. Uso de MongoDB y Mongoose
+Toda la persistencia de datos se realiza en MongoDB Atlas usando Mongoose como ORM, facilitando la interacción y validación de datos.
+
+### 6. Control de versiones (Git & GitHub)
+El proyecto está versionado con Git y alojado en un repositorio de GitHub. Incluye un archivo `.gitignore` para evitar subir archivos sensibles o innecesarios.
+
+### 7. Documentación de la API con Swagger/OpenAPI
+La API está documentada con Swagger/OpenAPI, accesible en `/api-docs`, permitiendo probar y entender todos los endpoints de manera visual e interactiva.
+
+### 8. Variables de entorno gestionadas con dotenv
+Las variables sensibles y de configuración se gestionan mediante el archivo `.env` y la librería dotenv, siguiendo buenas prácticas de seguridad.
+
 ## Endpoints principales
 
 ### Usuario
@@ -89,18 +115,6 @@ MercadoPirata/
 - GET `/api/shipping/:id` — Obtener un envío específico (requiere autenticación)
 - PUT `/api/shipping/:id/status` — Actualizar estado del envío (requiere autenticación)
 - DELETE `/api/shipping/:id` — Cancelar envío (requiere autenticación)
-
-## Requisitos y checklist para cumplir el proyecto
-
-- [x] Arquitectura de carpetas clara y modular
-- [x] Autenticación y autorización con JWT
-- [x] Modelo de Usuario y Producto (y Envío como extra)
-- [x] CRUD completo para productos
-- [x] Uso de MongoDB Atlas y Mongoose
-- [x] Control de versiones con Git y repositorio en GitHub
-- [x] Documentación de la API con Swagger/OpenAPI
-- [x] Variables de entorno gestionadas con dotenv
-- [x] Listo para desplegar en render.com
 
 ## Notas adicionales
 - Puedes extender el sistema agregando integración con Stripe o carrito de compras.
