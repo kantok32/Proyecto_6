@@ -2,12 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
+const setupSwagger = require('./swagger');
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Swagger docs
+setupSwagger(app);
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGODB_URI)
