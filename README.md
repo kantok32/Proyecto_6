@@ -1,12 +1,13 @@
 # Proyecto 6: Aplicación Backend con Autenticación
 
-Este proyecto es una aplicación backend que maneja la autenticación y autorización de usuarios, junto con la gestión de productos.
+Este proyecto es una aplicación backend que maneja la autenticación y autorización de usuarios, junto con la gestión de productos y envíos.
 
 ## Características
 
 - Autenticación de usuarios con JWT
 - Registro e inicio de sesión de usuarios
 - CRUD completo de productos
+- Sistema de envíos similar a Mercado Libre
 - Relación entre usuarios y productos
 - Protección de rutas con middleware de autenticación
 
@@ -55,6 +56,34 @@ Este proyecto es una aplicación backend que maneja la autenticación y autoriza
 - PUT `/api/product/update/:id` - Actualizar producto (requiere autenticación)
 - DELETE `/api/product/delete/:id` - Eliminar producto (requiere autenticación)
 
+### Envíos
+
+- POST `/api/shipping/create` - Crear envío (requiere autenticación)
+  ```json
+  {
+    "productId": "id_del_producto",
+    "address": {
+      "street": "Calle Principal",
+      "number": "123",
+      "city": "Ciudad",
+      "state": "Estado",
+      "zipCode": "12345",
+      "country": "País"
+    },
+    "shippingMethod": "standard|express|priority"
+  }
+  ```
+- GET `/api/shipping/my-shippings` - Obtener envíos del usuario (requiere autenticación)
+- GET `/api/shipping/:id` - Obtener un envío específico (requiere autenticación)
+- PUT `/api/shipping/:id/status` - Actualizar estado del envío (requiere autenticación)
+  ```json
+  {
+    "status": "pending|processing|shipped|delivered|cancelled",
+    "trackingNumber": "123456789"
+  }
+  ```
+- DELETE `/api/shipping/:id` - Cancelar envío (requiere autenticación)
+
 ## Estructura del proyecto
 
 ```
@@ -64,13 +93,16 @@ Proyecto_6/
 ├─ README.md
 ├─ controllers/
 │  ├─ userController.js
-│  └─ productController.js
+│  ├─ productController.js
+│  └─ shippingController.js
 ├─ models/
 │  ├─ userModel.js
-│  └─ productModel.js
+│  ├─ productModel.js
+│  └─ shippingModel.js
 ├─ routes/
 │  ├─ userRoutes.js
-│  └─ productRoutes.js
+│  ├─ productRoutes.js
+│  └─ shippingRoutes.js
 ├─ middleware/
 │  └─ auth.js
 └─ server.js
